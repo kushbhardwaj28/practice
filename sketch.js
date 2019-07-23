@@ -1,4 +1,3 @@
-
 function setup() {
   createCanvas(canvasWidth, canvasHeight);
 
@@ -11,6 +10,10 @@ function setup() {
 
     originalArr.push(new ValueBar(i, randomHeight));
   }
+
+  arrLength = sortArr.length;
+
+  currentSorting = bubbleSort;
 }
 
 function draw() {
@@ -19,13 +22,8 @@ function draw() {
   for (let i = 0; i < canvasWidth / barWidth; i++) {
     sortArr[i].render();
   }
+  
+  currentSorting.sort();
 
-  switch (selectedSort) {
-    case selectOptions[0]:
-    default:
-      bubbleSort();
-      break;
-  }
-
-  renderText();
+  renderText(currentSorting.iterationCount);
 }
