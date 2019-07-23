@@ -25,3 +25,25 @@ function onSelectChange() {
     selectedSort = item;
     console.log(selectedSort);
 }
+
+function onStartPressed() {
+    console.log('start');
+    loop();
+}
+
+function onStopPressed() {
+    console.log('stop');
+    noLoop();
+}
+
+function onResetPressed() {
+    noLoop();
+    sortArr = [];
+    originalArr.forEach((originalVal) => {
+        sortArr.push(new ValueBar(originalVal.position, originalVal.height));
+    });
+    iCount = 0;
+    jCount = 0;
+    iterationCount = 0;
+    redraw();
+}

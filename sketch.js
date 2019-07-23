@@ -2,17 +2,15 @@
 function setup() {
   createCanvas(canvasWidth, canvasHeight);
 
-  selectElement = createSelect();
-  selectOptions.forEach(element => {
-    selectElement.option(element + ' Sort');
-  });
-  selectElement.changed(onSelectChange);
-
+  getStartStopButton();
+  getSelectOptions();
   for (let i = 0; i < canvasWidth / barWidth; i++) {
-    var valueBar = new ValueBar(i, floor(random(10, canvasHeight)));
-    sortArr.push(valueBar);
+    let randomHeight = floor(random(10, canvasHeight));
+
+    sortArr.push(new ValueBar(i, randomHeight));
+
+    originalArr.push(new ValueBar(i, randomHeight));
   }
-  originalArr = sortArr;
 }
 
 function draw() {
